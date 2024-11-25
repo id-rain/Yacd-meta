@@ -51,6 +51,10 @@ function appendData(s: string) {
   let o: ConnectionsData;
   try {
     o = JSON.parse(s);
+    // If connections is null, initialize it as an empty array
+    if (!Array.isArray(o.connections)) {
+      o.connections = [];
+    }
     o.connections.forEach(conn => {
       let m = conn.metadata;
       if (m.process == null) {
